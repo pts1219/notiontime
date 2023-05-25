@@ -20,19 +20,16 @@ body{
   letter-spacing: 5px;
 }
 
-.hours, .minutes, .seconds {
+.years, .days, .hours, .minutes, .seconds {
   display: inline-block;
   padding: 20px;
   width: 100px;
   border-radius: 5px;
 }
-        
-        
-.days {
-  display: inline-block;
-  padding: 20px;
-  width: 150px;
-  border-radius: 5px;
+
+.years {
+  background: #595959;
+    color: #F2F2F2;
 }
 
 .days {
@@ -99,6 +96,8 @@ body{
     
 <div id="timer">
 
+    <div class="years"> 
+        <div id="years" class="numbers "> </div>years</div> 
     <div class="days"> 
         <div id="days" class="numbers "> </div>days</div> 
       <div class="hours"> 
@@ -127,12 +126,14 @@ let timer = setInterval(function() {
   const diff = myDate - today;
 
   // math
-  let days = Math.floor(diff / (1000 * 60 * 60 * 24));
+  let years = Math.floor(diff / (1000 * 60 * 60 * 24 * 365));
+  let days = Math.floor((diff % (1000 * 60 * 60 * 24 * 365) / (1000 * 60 * 60 * 24));
   let hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
   let minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
   let seconds = Math.floor((diff % (1000 * 60)) / 1000);
 
   // display
+  document.getElementById("years").innerHTML=years
   document.getElementById("days").innerHTML=days
   document.getElementById("hours").innerHTML=hours
   document.getElementById("minutes").innerHTML=minutes
